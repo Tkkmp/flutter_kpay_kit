@@ -86,4 +86,22 @@ class FlutterKpayKit {
 
     return data;
   }
+
+    static Future<String> connectKBZPay(
+      {required String prepayID,
+      required String merchCode,
+      required String appId,
+      required String signKey,
+      required String urlScheme}) async {
+
+    final String data = await _channel.invokeMethod('startPay', {
+      'prepay_id': prepayID,
+      'merch_code': merchCode,
+      'appid': appId,
+      'sign_key': signKey,
+      'url_scheme': urlScheme,
+    });
+
+    return data;
+  }
 }
